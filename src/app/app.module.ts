@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { DataService } from './services/data.service';
 import { PhraseComponent } from './phrase/phrase.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
+import { WordIdentificationComponent } from './word-identification/word-identification.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PhraseComponent,
-    AuthenticationComponent
+    AuthenticationComponent,
+    WordIdentificationComponent
   ],
   imports: [
     BrowserModule,

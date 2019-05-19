@@ -1,7 +1,5 @@
-
 .main-component-body {
   height: 100vh;
-
 }
 
 .background{
@@ -16,6 +14,54 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.has-error{
+  border-color: #d43f3a;
+}
+
+.responsive-text-1 {
+  font-size: 1.5rem;
+}
+
+.responsive-text-2 {
+  font-size: 1.17rem;
+}
+
+.responsive-text-3 {
+  font-size: 0.67rem;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  .responsive-text-1 {
+    font-size: 2rem;
+  }
+
+  .responsive-text-2 {
+    font-size: 1.41rem;
+  }
+
+  .responsive-text-3 {
+    font-size: 0.83rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .responsive-text-1 {
+    font-size: 2.5rem;
+  }
+
+  .responsive-text-2 {
+    font-size: 1.62rem;
+  }
+
+  .responsive-text-3 {
+    font-size: 1rem;
+  }
 }
 
 

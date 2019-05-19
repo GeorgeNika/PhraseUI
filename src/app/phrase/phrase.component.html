@@ -70,8 +70,10 @@
             (click) = "changeAnswersVisibility('wordsVisibility')" >
       words
     </button>
-    <div class="col-10 col-lg-9" [hidden]="!answersVisibility.wordsVisibility" >
-
+    <div class="col-10 col-lg-9" [hidden]="!answersVisibility.wordsVisibility">
+      <app-word-identification  *ngFor="let tempWord of wordsIdentification"
+        [languageUnit]="tempWord.languageUnit" [language]="currentTranslateDirection">
+      </app-word-identification>
     </div>
     <div class="d-none d-lg-block col-lg-1"></div>
   </div>

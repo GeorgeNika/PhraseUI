@@ -5,13 +5,15 @@ import { DataService } from '../services/data.service';
 @Component({
   selector: 'app-phrase',
   templateUrl: './phrase.component.html',
-  styleUrls: ['./phrase.component.css']
+  styleUrls: ['../app.component.css', './phrase.component.css']
 })
 export class PhraseComponent implements OnInit {
 
   HEBREW = 'hebrew';
   RUSSIAN = 'russian';
   TRANSCRIPTION = 'voice';
+  TRANSCRIPTION_FOR_LANGUAGE_UNIT = 'transcription';
+
   LEFT_DIRECTION_CLASS = 'text-left';
   RIGHT_DIRECTION_CLASS = 'text-right';
 
@@ -21,6 +23,9 @@ export class PhraseComponent implements OnInit {
 
   firstAnswerCaption = ' _ ';
   secondAnswerCaption = ' _ ';
+
+  wordsIdentification = [];
+  currentTranslateDirection = '';
 
   questionTextDirectionClass = this.LEFT_DIRECTION_CLASS;
   firstAnswerTextDirectionClass = this.LEFT_DIRECTION_CLASS;
@@ -48,7 +53,7 @@ export class PhraseComponent implements OnInit {
   translateDirections = [
     {name: 'russian ->',    forShowValue: 'russian'},
     {name: 'hebrew ->',     forShowValue: 'hebrew'},
-    {name: 'voice ->', forShowValue: 'voice'}
+    {name: 'voice ->',      forShowValue: 'voice'}
   ];
 
   translateDirectionForm = new FormGroup({
@@ -90,15 +95,17 @@ export class PhraseComponent implements OnInit {
     } else {
       this.setDataForTranscriptionType(val);
     }
-    //todo set words
+    this.setDataForWords(val, translateDirection);
   }
 
   setDataForRussianType(val) {
     this.questionTextDirectionClass = this.LEFT_DIRECTION_CLASS;
     this.question = val.russian;
+
     this.firstAnswerCaption = this.HEBREW;
     this.firstAnswerTextDirectionClass = this.RIGHT_DIRECTION_CLASS;
     this.firstAnswer = val.hebrew;
+
     this.secondAnswerCaption = this.TRANSCRIPTION;
     this.secondAnswerTextDirectionClass = this.LEFT_DIRECTION_CLASS;
     this.secondAnswer = val.voice;
@@ -107,9 +114,11 @@ export class PhraseComponent implements OnInit {
   setDataForHebrewType(val) {
     this.questionTextDirectionClass = this.RIGHT_DIRECTION_CLASS;
     this.question = val.hebrew;
+
     this.firstAnswerCaption = this.RUSSIAN;
     this.firstAnswerTextDirectionClass = this.LEFT_DIRECTION_CLASS;
     this.firstAnswer = val.russian;
+
     this.secondAnswerCaption = this.TRANSCRIPTION;
     this.secondAnswerTextDirectionClass = this.LEFT_DIRECTION_CLASS;
     this.secondAnswer = val.voice;
@@ -118,12 +127,28 @@ export class PhraseComponent implements OnInit {
   setDataForTranscriptionType(val) {
     this.questionTextDirectionClass = this.LEFT_DIRECTION_CLASS;
     this.question = val.voice;
+
     this.firstAnswerCaption = this.HEBREW;
     this.firstAnswerTextDirectionClass = this.RIGHT_DIRECTION_CLASS;
     this.firstAnswer = val.hebrew;
+
     this.secondAnswerCaption = this.RUSSIAN;
     this.secondAnswerTextDirectionClass = this.LEFT_DIRECTION_CLASS;
     this.secondAnswer = val.russian;
+  }
+
+  getTranslateDirectionForLanguageUnit(translateDirection) {
+    if (translateDirection === this.TRANSCRIPTION) {
+      return this.TRANSCRIPTION_FOR_LANGUAGE_UNIT;
+    } else {
+      return translateDirection;
+    }
+  }
+
+  setDataForWords(val, translateDirection) {
+    console.log(val);
+    this.wordsIdentification = val.wordsIdentification;
+    this.currentTranslateDirection = this.getTranslateDirectionForLanguageUnit(translateDirection)
   }
 
   changeAnswersVisibility(section) {
