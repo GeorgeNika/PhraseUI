@@ -8,6 +8,7 @@ import { DataService } from './services/data.service';
 import { PhraseComponent } from './phrase/phrase.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { WordIdentificationComponent } from './word-identification/word-identification.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { WordIdentificationComponent } from './word-identification/word-identifi
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

@@ -9,7 +9,7 @@ import {LanguageUnit} from '../models/language_unit.class';
 export class WordIdentificationComponent implements OnInit {
 
   @Input( 'languageUnit' ) languageUnit: LanguageUnit ;
-  @Input( 'language ') language: LanguageUnit ;
+  @Input( 'language ') language: string ;
 
   name: string;
   routeLink: string;
