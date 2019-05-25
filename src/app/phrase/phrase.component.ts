@@ -24,7 +24,7 @@ export class PhraseComponent implements OnInit {
   firstAnswerCaption = ' _ ';
   secondAnswerCaption = ' _ ';
 
-  wordsIdentification = [];
+  wordButtons = [];
   currentTranslateDirection = '';
 
   questionTextDirectionClass = this.LEFT_DIRECTION_CLASS;
@@ -146,9 +146,8 @@ export class PhraseComponent implements OnInit {
   }
 
   setDataForWords(val, translateDirection) {
-    console.log(val);
-    this.wordsIdentification = val.wordsIdentification;
-    this.currentTranslateDirection = this.getTranslateDirectionForLanguageUnit(translateDirection)
+    this.wordButtons = val.wordsIdentification;
+    this.currentTranslateDirection = this.getTranslateDirectionForLanguageUnit(translateDirection);
   }
 
   changeAnswersVisibility(section) {

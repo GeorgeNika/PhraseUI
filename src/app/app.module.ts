@@ -7,15 +7,17 @@ import { AppComponent } from './app.component';
 import { DataService } from './services/data.service';
 import { PhraseComponent } from './phrase/phrase.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
-import { WordIdentificationComponent } from './word-identification/word-identification.component';
+import { WordButtonComponent } from './word-button/word-button.component';
 import { AppRoutingModule } from './app-routing.module';
+import { WordComponent } from './word/word.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PhraseComponent,
     AuthenticationComponent,
-    WordIdentificationComponent
+    WordButtonComponent,
+    WordComponent
   ],
   imports: [
     BrowserModule,

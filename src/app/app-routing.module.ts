@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import {PhraseComponent} from './phrase/phrase.component'
+import {PhraseComponent} from './phrase/phrase.component';
+import {WordComponent} from './word/word.component';
 
 
 const routes: Routes = [
   { path: '', component: PhraseComponent },
   { path: 'phrase', redirectTo: '' },
-  { path: 'word', component: PhraseComponent },
-  // { path: 'item/:id', component: ItemComponent},
+  { path: 'word/:wordType/:wordId', component: WordComponent },
   { path: '**', component: PhraseComponent }
 ];
 

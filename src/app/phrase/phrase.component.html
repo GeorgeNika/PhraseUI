@@ -71,9 +71,12 @@
       words
     </button>
     <div class="col-10 col-lg-9" [hidden]="!answersVisibility.wordsVisibility">
-      <app-word-identification  *ngFor="let tempWord of wordsIdentification"
-        [languageUnit]="tempWord.languageUnit" [language]="currentTranslateDirection">
-      </app-word-identification>
+      <app-word-button *ngFor="let tempWord of wordButtons"
+                       [wordType]="tempWord.type"
+                       [wordId]="tempWord.wordId"
+                       [languageUnit]="tempWord.languageUnit"
+                       [language]="currentTranslateDirection">
+      </app-word-button>
     </div>
     <div class="d-none d-lg-block col-lg-1"></div>
   </div>

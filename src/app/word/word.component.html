@@ -1,0 +1,57 @@
+<div class="container-fluid">
+  <br/>
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-1"></div>
+    <div class="col-12 col-lg-10">
+      <div class="row justify-content-between">
+        <div class="col-5 col-md-4 btn btn-md btn-info responsive-text-3">
+          {{wordType}}
+        </div>
+        <div class="col-5 col-md-4 btn btn-md btn-info responsive-text-3">
+          {{wordId}}
+        </div>
+        <button type="button" routerLink="" class="col-2 btn btn-md btn-primary responsive-text-3">
+          new phrase
+        </button>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-1"></div>
+  </div>
+</div>
+<div class="container-fluid">
+  <br/>
+  <div class="row">
+    <div class="col-0 col-lg-1"></div>
+    <div class="col-12 col-lg-10">
+      <table class="table table-hover table-striped">
+        <thead>
+        <tr class="row bg-info">
+          <td class="col-3"> info </td>
+          <td class="col-3"> russian </td>
+          <td class="col-3"> voice </td>
+          <td class="col-3 text-right"> hebrew </td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="row" *ngFor="let tempInfo of dataFromApi">
+          <td class="col-3"> --- </td>
+          <td class="col-3"> {{tempInfo.russian}}</td>
+          <td class="col-3"> {{tempInfo.transcription}}</td>
+          <td class="col-3 text-right"> {{tempInfo.hebrew}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <br/>
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-1"></div>
+    <button type="button" routerLink="" class="col-12 col-lg-10 btn btn-md btn-block btn-primary responsive-text-3">
+      new phrase
+    </button>
+    <div class="d-none d-lg-block col-lg-1"></div>
+  </div>
+</div>

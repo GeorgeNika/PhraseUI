@@ -7,7 +7,8 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 })
 export class DataService {
 
-  private dataUrl = 'api/v1/phrase';
+  private newPhraseUrl = 'api/v1/phrase';
+  private wordInformationUrl = 'api/v1/word';
 
   constructor(private http: HttpClient) { }
 
@@ -16,7 +17,16 @@ export class DataService {
     const params = new HttpParams()
       .set('phraseType', phraseType);
 
-    return this.http.get(this.dataUrl, { params } );
+    return this.http.get(this.newPhraseUrl, { params } );
+  }
+
+  getWordInformation(wordType: string, wordId: string): Observable< any > {
+
+    const fullWordInformationUrl = this.wordInformationUrl
+        + '/' + wordType
+        + '/' + wordId;
+
+    return this.http.get(fullWordInformationUrl);
   }
 
 }
