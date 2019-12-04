@@ -1,10 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DataService } from '../services/data.service';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-phrase',
   templateUrl: './phrase.component.html',
+  animations: [
+    trigger('newQuestion', [
+      state('wait', style({opacity: .3})),
+      transition('* => wait', animate('1.5s', style({opacity: .1}))),
+      transition('wait => *', animate('1.5s', style({opacity: 1})))
+    ])
+  ],
   styleUrls: ['../app.component.css', './phrase.component.css']
 })
 export class PhraseComponent implements OnInit {
@@ -16,6 +24,8 @@ export class PhraseComponent implements OnInit {
 
   LEFT_DIRECTION_CLASS = 'text-left';
   RIGHT_DIRECTION_CLASS = 'text-right';
+
+  animationTriggerState = 'wait';
 
   question = ' _ ';
   firstAnswer = '';
@@ -63,7 +73,7 @@ export class PhraseComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
-    this.clearAnswersVisibility();
+    this.clearAnswers();
     this.getNewPhrase();
   }
 
@@ -80,6 +90,8 @@ export class PhraseComponent implements OnInit {
   }
 
   getNewPhrase() {
+    this.animationTriggerState = 'wait';
+    this.clearAnswers();
     this.dataService.getNewPhrase(this.getSelectedPhraseType()).subscribe( val => {
       this.setNewPhrase(val);
     });
@@ -87,7 +99,8 @@ export class PhraseComponent implements OnInit {
 
   setNewPhrase(val) {
     const translateDirection = this.getSelectedTranslateDirection();
-    this.clearAnswersVisibility();
+    this.animationTriggerState = 'newQuestion';
+    this.clearAnswers();
     if (translateDirection === this.RUSSIAN) {
       this.setDataForRussianType(val);
     } else if (translateDirection === this.HEBREW) {
@@ -158,5 +171,12 @@ export class PhraseComponent implements OnInit {
     this.answersVisibility.answerFirstVisibility = false;
     this.answersVisibility.answerSecondVisibility = false;
     this.answersVisibility.wordsVisibility = false;
+  }
+
+  clearAnswers() {
+    this.clearAnswersVisibility();
+    this.firstAnswer = '';
+    this.secondAnswer = '';
+    this.wordButtons = [];
   }
 }

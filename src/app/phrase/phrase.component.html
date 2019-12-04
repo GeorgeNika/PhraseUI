@@ -34,7 +34,9 @@
 <div class="container-fluid">
   <div class="row">
     <div class="d-none d-lg-block col-lg-1"></div>
-    <div class="col-12 col-lg-10 responsive-text-1" [ngClass]="questionTextDirectionClass">
+    <div class="col-12 col-lg-10 responsive-text-1"
+         [ngClass]="questionTextDirectionClass"
+         [@newQuestion]=animationTriggerState>
       {{question}}
     </div>
     <div class="d-none d-lg-block col-lg-1"></div>
